@@ -1,6 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Екатерина Зощик](https://up.htmlacademy.ru/javascript/10/user/20096).
+* Наставник: [Екатерина Кащенко](https://up.htmlacademy.ru/javascript/10/user/109008).
 
 ---
 
