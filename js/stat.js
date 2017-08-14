@@ -3,10 +3,10 @@
 window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = '#fff';
   ctx.fillRect(100, 10, 420, 270);
 
-  ctx.fillStyle = '#000000';
+  ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
@@ -33,7 +33,7 @@ window.renderStatistics = function (ctx, names, times) {
     barHeight = step * times[i];
 
     // Отрисовка времени прохождения
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#000';
     ctx.fillText(times[i].toFixed(0), barX, barY + histogramHeight - barHeight - 10);
 
     // Определение цвета колонки гистограммы
@@ -47,7 +47,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillRect(barX, barY + histogramHeight - barHeight, barWidth, barHeight);
 
     // Отрисовка имени игрока
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#000';
     ctx.fillText(names[i], barX, barY + histogramHeight + 20);
     barX += indent;
   }
