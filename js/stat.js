@@ -43,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
       ctx.fillStyle = 'rgb(0, 0, ' + Math.round((Math.random() * 255)) + ')';
     }
 
-    // Отрисовка колонки гистрограммы
+    // Отрисовка колонки гистограммы
     ctx.fillRect(barX, barY + histogramHeight - barHeight, barWidth, barHeight);
 
     // Отрисовка имени игрока
