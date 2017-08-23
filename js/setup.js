@@ -3,7 +3,7 @@
 (function () {
   document.querySelector('.setup').classList.remove('hidden');
 
-  var quantity = 4;
+  var wizardsQuantity = 4;
 
   // Получаем данные о волшебнике
   function getWizardData() {
@@ -29,11 +29,11 @@
   }
 
   // Создаем массив волшебников с заполненными данными
-  function generateWizardsArray(wizardsQuantity) {
+  function generateWizardsArray(wizardsCount) {
     var wizardData = getWizardData();
     var wizards = [];
 
-    for (var i = 0; i < wizardsQuantity; i++) {
+    for (var i = 0; i < wizardsCount; i++) {
       wizards.push({
         name: getRandomArrayItem(wizardData.wizardFirstNames) + ' ' + getRandomArrayItem(wizardData.wizardLastNames),
         coatColor: getRandomArrayItem(wizardData.wizardCoatColors),
@@ -44,13 +44,13 @@
   }
 
   // Создаем DOM-элементы для волшебников и заполняем их данными из ранее созданного массива
-  function createWizardElements(wizardsQuantity) {
-    var wizards = generateWizardsArray();
+  function createWizardElements(wizardsCount) {
+    var wizards = generateWizardsArray(wizardsCount);
     var similarWizardTemplate = document.querySelector('#similar-wizard-template').content;
     var fragment = document.createDocumentFragment();
     var similarListElement = document.querySelector('.setup-similar-list');
 
-    for (var i = 0; i < wizardsQuantity; i++) {
+    for (var i = 0; i < wizardsCount; i++) {
       var wizardElement = similarWizardTemplate.cloneNode(true);
       wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
       wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
@@ -61,8 +61,7 @@
     similarListElement.appendChild(fragment);
   }
 
-  generateWizardsArray(quantity);
-  createWizardElements(quantity);
+  createWizardElements(wizardsQuantity);
 
   document.querySelector('.setup-similar').classList.remove('hidden');
 })();
