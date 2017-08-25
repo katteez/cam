@@ -62,13 +62,13 @@
 
   <div class="demo"></div>
 
-  <div class="setup-open">
+  <div class="setup-open" tabindex="0">
     <img src="./img/user-1.jpg" class="setup-open-icon">
   </div>
 </header>
 
 <div class="overlay setup hidden">
-  <form class="setup-wizard-form" method="post" enctype="multipart/form-data" autocomplete="off">
+  <form class="setup-wizard-form" method="post" enctype="multipart/form-data" action="https://1510.dump.academy/code-and-magick" autocomplete="off">
     <div class="setup-title">
       <div class="setup-user">
         <div class="upload">
@@ -76,11 +76,11 @@
           <input type="file" name="avatar">
         </div>
         <label>
-          <input type="text" name="username" class="setup-user-name" value="Синий Пендальф"/>
+          <input type="text" name="username" class="setup-user-name" value="Синий Пендальф" minlength="2" maxlength="25" required/>
         </label>
       </div>
 
-      <span class="setup-close">&times;</span>
+      <span class="setup-close" tabindex="0">&times;</span>
     </div>
 
     <div class="setup-artifacts-shop">
@@ -195,7 +195,7 @@ function getWizardY(height) {
 };
 </script>
 <script src="./js/stat.js"></script>
-<script src="./js/setup.js"></script>
+<script src="js/setup.js"></script>
 <script src="./js/game.js"></script>
 
 </body>

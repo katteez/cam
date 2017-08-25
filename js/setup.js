@@ -1,9 +1,18 @@
 'use strict';
 
 (function () {
-  document.querySelector('.setup').classList.remove('hidden');
-
+  var setup = document.querySelector('.setup');
+  var setupSimilar = setup.querySelector('.setup-similar');
+  var setupClose = setup.querySelector('.setup-close');
+  var setupUserName = setup.querySelector('.setup-user-name');
+  var setupOpen = document.querySelector('.setup-open');
   var wizardsQuantity = 4;
+  var wizardCoat = setup.querySelector('.wizard-coat');
+  var wizardEyes = setup.querySelector('.wizard-eyes');
+  var fireballWrap = setup.querySelector('.setup-fireball-wrap');
+
+  var ENTER_KEYCODE = 13;
+  var ESC_KEYCODE = 27;
 
   // Получаем данные о волшебнике
   function getWizardData() {
@@ -18,7 +27,8 @@
         'rgb(215, 210, 55)',
         'rgb(0, 0, 0)'
       ],
-      wizardEyesColors: ['black', 'red', 'blue', 'yellow', 'green']
+      wizardEyesColors: ['black', 'red', 'blue', 'yellow', 'green'],
+      wizardFireballColors: ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848']
     };
   }
 
@@ -63,5 +73,72 @@
 
   createWizardElements(wizardsQuantity);
 
-  document.querySelector('.setup-similar').classList.remove('hidden');
+  setupSimilar.classList.remove('hidden');
+
+  // Закрываем по нажатию на ESC окно с настройками волшебника,
+  // если поле с вводом имени не в фокусе
+  function onPopupEscPress(evt) {
+    if (evt.keyCode === ESC_KEYCODE && evt.target !== setupUserName) {
+      closePopup();
+    }
+  }
+
+  // Открываем окно с настройками волшебника
+  function openPopup() {
+    setup.classList.remove('hidden');
+    document.addEventListener('keydown', onPopupEscPress);
+  }
+
+  // Закрываем окно с настройками волшебника
+  function closePopup() {
+    setup.classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
+  }
+
+  // Обработчик по клику на аватар игрока
+  setupOpen.addEventListener('click', openPopup);
+
+  // Обработчик по нажатию на ENTER, когда аватар игрока в фокусе
+  setupOpen.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      openPopup();
+    }
+  });
+
+  // Обработчик по клику на крестик в окне с настройками волшебника
+  setupClose.addEventListener('click', closePopup);
+
+  // Обработчик по нажатию на ENTER, когда крестик в окне с настройками волшебника в фокусе
+  setupClose.addEventListener('keydown', function(evt) {
+    if (evt.keyCode === ENTER_KEYCODE) {
+      closePopup();
+    }
+  });
+
+  // Изменяем рандомно цвет мантии волшебника
+  function changeCoatColor() {
+    var wizardData = getWizardData();
+    wizardCoat.style.fill = getRandomArrayItem(wizardData.wizardCoatColors);
+  }
+
+  // Изменяем рандомно цвет глаз волшебника
+  function changeEyesColor() {
+    var wizardData = getWizardData();
+    wizardEyes.style.fill = getRandomArrayItem(wizardData.wizardEyesColors);
+  }
+
+  // Изменяем рандомно цвет фаербола волшебника
+  function changeFireballColor() {
+    var wizardData = getWizardData();
+    fireballWrap.style.backgroundColor = getRandomArrayItem(wizardData.wizardFireballColors);
+  }
+
+  // Обработчик по клику на мантию волшебника
+  wizardCoat.addEventListener('click', changeCoatColor);
+
+  // Обработчик по клику на глаза волшебника
+  wizardEyes.addEventListener('click', changeEyesColor);
+
+  // Обработчик по клику на фаербол волшебника
+  fireballWrap.addEventListener('click', changeFireballColor);
 })();
