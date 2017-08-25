@@ -99,7 +99,7 @@
   setupOpen.addEventListener('click', openPopup);
 
   // Обработчик по нажатию на ENTER, когда аватар игрока в фокусе
-  setupOpen.addEventListener('keydown', function(evt) {
+  setupOpen.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       openPopup();
     }
@@ -109,7 +109,7 @@
   setupClose.addEventListener('click', closePopup);
 
   // Обработчик по нажатию на ENTER, когда крестик в окне с настройками волшебника в фокусе
-  setupClose.addEventListener('keydown', function(evt) {
+  setupClose.addEventListener('keydown', function (evt) {
     if (evt.keyCode === ENTER_KEYCODE) {
       closePopup();
     }
